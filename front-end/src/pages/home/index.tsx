@@ -45,7 +45,7 @@ const Home = () => {
             <td className={styles.tdLabel} data-Label="Volume">
             2B
             </td>
-            <td className={styles.tdLabel} data-Label="Mudança 24 Hr">
+            <td className={styles.tdPronfit} data-Label="Mudança 24 Hr">
 
             <span>1.20</span>
             </td>

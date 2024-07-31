@@ -20,3 +20,96 @@
 .form button{
     background: transparent;
 }
+
+table{
+    border-collapse: separate;
+    border-spacing: 0 14px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption{
+    font: size 16px;
+    margin: 0.5em 0.75em;
+    
+    
+}
+
+th{
+    color: white;
+}
+
+.tr{
+    background-color: #1d1c20;
+
+}
+td:first-child,
+th:first-child{
+    border-radius: 8px 0 0 8px;
+}
+
+td:last-child,
+th:last-child{
+    border-radius: 0 8px 8px 0;
+}
+
+table th,
+table td{
+    padding: 8px;
+    text-align: center;
+}
+
+.tdLabel{
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+}
+.tdPronfit{
+    color: #00ff00;
+}
+
+.tdLoss{
+    color: #ff0000;
+    font-weight: bold;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 600px){
+   table{
+    border: 0;
+   }
+   table thead{
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+       
+    
+   }
+   .tr{
+    border-bottom: 1px solid #DDD;
+    display: block;
+    margin-bottom: 14px;
+   }
+    .td{
+     border-bottom: 1px solid rgba(221, 221, 221, 0.70);
+     display: block;
+     font-size: 14px;
+     text-align: right;
+    }
+
+    table td:before{
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
