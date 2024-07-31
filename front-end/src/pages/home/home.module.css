@@ -113,3 +113,11 @@ table td{
         text-transform: uppercase;
     }
 }
+
+.buttonMore{
+    background-color: rgb(84, 167, 167);
+    padding: 8px 24px;
+    color: white;
+    margin: 14px 0;
+    border-radius:8px ;
+}

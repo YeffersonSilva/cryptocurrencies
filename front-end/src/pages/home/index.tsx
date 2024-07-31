@@ -1,13 +1,36 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "./home.module.css";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
+import {  useState, FormEvent } from "react";
 
 const Home = () => {
+  const [input, setInput] = useState("");
+
+  const navigate = useNavigate();
+
+  function hadleSummit(e: FormEvent) {
+    e.preventDefault();
+    if (input === "") {
+      return;
+    }
+    navigate(`/detail/${input}`);
+   
+  }
+
+  function handleMore() {
+    navigate(`/detail`);
+  }
+
   return (
     <main className={styles.container}>
-      <form className={styles.form}>
-        <input type="text" placeholder="Digite o nome da moeda" />
+      <form className={styles.form} onSubmit={hadleSummit}>
+        <input
+          type="text"
+          placeholder="Digite o nome da moeda"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
         <button type="submit">
           <BsSearch size={30} color="#FFF" />
         </button>
@@ -26,7 +49,6 @@ const Home = () => {
           <tr className={styles.tr}>
             <td className={styles.tdLabel} data-Label="Moeda">
               <div className={styles.name}>
-                
                 <Link to="/cripto">
                   <span> Bitcoin </span> | BTC
                 </Link>
@@ -36,24 +58,22 @@ const Home = () => {
               1T
             </td>
             <td className={styles.tdLabel} data-Label="Preço">
-            8000
+              8000
             </td>
             <td className={styles.tdLabel} data-Label="Volume">
-            2B
+              2B
             </td>
-            
+
             <td className={styles.tdLabel} data-Label="Volume">
-            2B
+              2B
             </td>
             <td className={styles.tdPronfit} data-Label="Mudança 24 Hr">
-
-            <span>1.20</span>
+              <span>1.20</span>
             </td>
           </tr>
-
-          
         </tbody>
       </table>
+      <button onClick={handleMore} className={styles.buttonMore}>Buscar Mais</button>
     </main>
   );
 };
