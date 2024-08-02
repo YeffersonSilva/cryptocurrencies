@@ -16,6 +16,8 @@ interface CoinProps {
   marketCapUsd: string;
   volumeUsd24Hr: string;
   explorer: string;
+  formatedMarket?: string;
+  formatedVolume?: string;
 }
 
 interface DataProps {
@@ -44,11 +46,19 @@ const Home = () => {
         style: "currency",
         currency: "USD",
       });
+
+      const priceCompact = Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        notation: "compact",
+      });
       
       const formattedData = data.data.map((item) => {
         return {
           ...item,
           priceUsd: priceFormatter.format(parseFloat(item.priceUsd)),
+          formatedMarket: priceCompact.format(parseFloat(item.marketCapUsd)),
+          formatedVolume: priceCompact.format(parseFloat(item.volumeUsd24Hr)),
         };
       });
 
@@ -104,13 +114,13 @@ const Home = () => {
                 </div>
               </td>
               <td className={styles.tdLabel} data-label="Valor Mercado">
-                {parseFloat(coin.marketCapUsd).toFixed(2)}
+                {coin.formatedMarket}
               </td>
               <td className={styles.tdLabel} data-label="Preço">
                 {coin.priceUsd}
               </td>
               <td className={styles.tdLabel} data-label="Volume">
-                {parseFloat(coin.volumeUsd24Hr).toFixed(2)}
+                {coin.formatedVolume}
               </td>
               <td className={styles.tdLabel} data-label="Mudança 24 Hr">
                 {parseFloat(coin.changePercent24Hr).toFixed(2)}%
